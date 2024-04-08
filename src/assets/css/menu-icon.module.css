@@ -1,0 +1,41 @@
+/*menu icon*/
+.menuIcon {
+    width: 60px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor : pointer;
+}
+.menuIcon span {
+    width: 40px;
+    height: 3px;
+    position: absolute;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+.menuIcon span:nth-child(1) {
+    transform: translateY(-12px);
+    width: 25px;
+    left: 10px;
+}
+.menuIcon span:nth-child(2) {
+    transform: translateY(12px);
+    width: 15px;
+    left: 10px;
+}
+.menuIcon.show span:nth-child(3) {
+    transform: translateX(-60px);
+    opacity: 0;
+}
+.menuIcon.show span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+    width: 40px;
+    transition: 0.125s;
+}
+.menuIcon.show span:nth-child(2) {
+    transform: translateY(0) rotate(315deg);
+    width: 40px;
+    transition: 0.25s;
+}
