@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import "@theme-toggles/react/css/expand.css"
 import { Expand } from '@theme-toggles/react';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { toggleDarkMode } from '../redux/action/darkMode';
 
 const Navbar = () => {
 

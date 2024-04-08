@@ -51,7 +51,7 @@ const FilterDiv = () => {
 
       </div>
 
-      <button type="button" class="w-full text-white bg-primary hover:bg-primaryHover focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-primary dark:hover:bg-primaryHover focus:outline-none dark:focus:ring-blue-800">Search</button>
+      <button type="button" className="w-full text-white bg-primary hover:bg-primaryHover focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-primary dark:hover:bg-primaryHover focus:outline-none dark:focus:ring-blue-800">Search</button>
 
     </div>
   )
