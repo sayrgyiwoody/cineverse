@@ -30,7 +30,9 @@ const Home = () => {
   return (
     <div className=' min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:p-6'>
       <div className="md:flex md:gap-x-6">
-        <FilterDiv></FilterDiv>
+       <div className="mb-4 md:mb-0">
+       <FilterDiv></FilterDiv>
+       </div>
         <div className="">
           <MovieList></MovieList>
           <Pagination ></Pagination>
