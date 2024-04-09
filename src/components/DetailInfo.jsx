@@ -69,7 +69,7 @@ const DetailInfo = ({movie}) => {
 
 <div className="z-20 md:w-4/5 text-white">
     <h3 className='  text-3xl font-bold'>{movie.title} <span className="text-gray-300 text-2xl">( {movie.release_date.slice(0, 4)} )</span> </h3> 
-  <div className="md:flex items-center gap-x-3 mt-2 md:text-sm text-xl ">
+  <div className="md:flex items-center gap-x-3 mt-2 md:text-sm text-lg ">
     <div className="flex items-center mt-4 mb-5 md:my-2 gap-x-2">
         <div className=" w-14 h-14">
                 <CircularProgressbar styles={buildStyles(getRadialStyle(getPercent(movie.vote_average)))} value={getPercent(movie.vote_average)} text={`${getPercent(movie.vote_average)}%`} />

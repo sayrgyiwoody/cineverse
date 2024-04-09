@@ -49,7 +49,7 @@ const DetailPage = () => {
           <DetailInfo movie={movie}></DetailInfo>
         <div className="md:grid md:grid-cols-8 ">
           <div className=" md:col-span-6">
-
+          <p className=' text-gray-800 dark:text-white text-xl font-semibold mt-5 ms-4'>Top Billed Cast</p>
             <CastSwiper cast={movie?.credits?.cast}></CastSwiper>
           </div>
 
@@ -73,10 +73,10 @@ const DetailPage = () => {
               <p className='mb-4'>{movie.original_language.toUpperCase()}</p>
 
               <p className=' font-semibold'>Budget</p>
-              <p className='mb-4'>${movie.budget}</p>
+              <p className='mb-4'>{movie.budget ? '$' + movie.budget : '-'}</p>
 
               <p className=' font-semibold'>Revenue</p>
-              <p className='mb-4'>${movie.revenue}</p>
+              <p className='mb-4'>{movie.revenue ? '$' + movie.revenue : '-'}</p>
           </div>
         </div>
         </div>

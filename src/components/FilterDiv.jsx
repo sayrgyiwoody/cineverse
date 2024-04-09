@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useToggle from '../hooks/useToggle'
+import { api, api_key } from '../assets/api';
+
 
 const FilterDiv = () => {
 
@@ -8,6 +10,17 @@ const FilterDiv = () => {
 
   const [showFilter, toggleFilter] = useToggle(false);
 
+  const [genres,setGenres] = useState([]);
+
+  const fetchGenreIds = async () => {
+    let res = await api.get(`/genre/movie/list?api_key=${api_key}`);
+    setGenres(res.data.genres);
+    console.log(genres)
+  }
+
+  useEffect(()=>{
+    fetchGenreIds();
+  },[])
 
 
   return (
@@ -25,7 +38,7 @@ const FilterDiv = () => {
         <div className={`${showSorting ? '' : 'hidden'}`}>
           <div className="p-5  border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
             <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-            <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+            <p className="text-gray-500 dark:text-gray-400">Action</p>
           </div>
         </div>
 
@@ -43,8 +56,14 @@ const FilterDiv = () => {
         </h2>
         <div className={`${showFilter ? '' : 'hidden'}`}>
           <div className="p-5  border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-            <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-            <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+            <p className="mb-4 text-gray-900 font-semibold dark:text-white">Genres</p>
+          
+          <div className="flex flex-wrap ">
+          {genres.map((genre,index)=>(
+            <p key={index} className="text-gray-600 me-2 mb-2 hover:bg-primaryHover hover:text-white cursor-pointer dark:text-gray-300 rounded-3xl text-sm border w-fit px-3 py-1 flex items-center justify-center">{genre.name}</p>
+          ))}
+          </div>
+          
           </div>
         </div>
 

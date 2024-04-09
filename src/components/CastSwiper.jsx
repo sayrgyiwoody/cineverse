@@ -44,6 +44,7 @@ const CastSwiper = ({cast}) => {
                
                 className="mySwiper p-5"
             >
+                
                 { paginatedCast.map((cast,index) =>(
                     <SwiperSlide key={index} className='  text-gray-800 dark:text-slate-100'>
 
