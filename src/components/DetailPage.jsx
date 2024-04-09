@@ -7,7 +7,9 @@ import { selectMovie, removeSelectedMovie } from '../redux/action/movie';
 import DetailInfo from './DetailInfo';
 import CastSwiper from './CastSwiper';
 import DetailPlaceholder from './DetailPlaceholder';
-
+import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 const DetailPage = () => {
 
@@ -35,29 +37,53 @@ const DetailPage = () => {
   let movie = {};
   movie = useSelector((state) => state.movie.movie);
 
-  
 
   return (
-    <div className=' min-h-screen bg-slate-100 dark:bg-gray-900'>
+    <div className=' bg-slate-100 dark:bg-gray-900'>
 
       {JSON.stringify(movie) != "{}" && loadingStatus === false ? (
-      <DetailInfo movie={movie}></DetailInfo>
+        <div className="">
+          <DetailInfo movie={movie}></DetailInfo>
+        <div className="md:grid md:grid-cols-8 ">
+          <div className=" md:col-span-6">
+
+            <CastSwiper cast={movie?.credits?.cast}></CastSwiper>
+          </div>
+
+          <div className="text-gray-800 dark:text-slate-50 p-6 bg-white dark:bg-gray-800 md:col-span-2 h-full">
+            <div className="flex gap-x-3 mb-6">
+              <a href="#">
+                <FaFacebook className=' hover:text-primary duration-150 cursor-pointer w-6 h-6' />
+              </a>
+              <a href="#">
+                <FaInstagram className=' hover:text-primary duration-150 cursor-pointer w-6 h-6' />
+              </a>
+              |
+              <a href={movie.homepage}>
+                <FaLink className=' hover:text-primary duration-150 cursor-pointer w-6 h-6' />
+              </a>
+            </div>
+              <p className='font-semibold'>Status</p>
+              <p className='mb-4'>{movie.status}</p>
+
+              <p className='font-semibold'>Original Language</p>
+              <p className='mb-4'>{movie.original_language}</p>
+
+              <p className=' font-semibold'>Budget</p>
+              <p className='mb-4'>${movie.budget}</p>
+
+              <p className=' font-semibold'>Revenue</p>
+              <p className='mb-4'>${movie.revenue}</p>
+          </div>
+        </div>
+        </div>
 
       ) : (
         <DetailPlaceholder></DetailPlaceholder>
       )}
-    
-    <div className="md:grid md:grid-cols-8 ">
-      <div className=" md:col-span-6">
-      { movie &&  
-    <CastSwiper cast={movie?.credits?.cast}></CastSwiper>
-    }
-      </div>
-    
-    <div className="">
 
-    </div>
-    </div>
+
+
 
     </div>
 

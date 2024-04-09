@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div className='relative min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:p-6'>
       <div className="md:flex md:gap-x-6">
-       <div className="mb-4 md:mb-0">
+       <div className="mb-4 md:mb-0 hidden md:block">
        <FilterDiv></FilterDiv>
        </div>
         <div className="">
