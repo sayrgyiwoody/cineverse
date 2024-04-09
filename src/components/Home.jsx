@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Pagination from './Pagination'
 import PlaceHolderList from './PlaceHolderList'
 import ScrollTop from './ScrollTop'
+import Navbar from './Navbar'
 
 const Home = () => {
 
@@ -37,6 +38,8 @@ const Home = () => {
 
 
   return (
+   <div>
+     <Navbar setLoadingStatus={setLoadingStatus}></Navbar>
     <div className='relative min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:p-6'>
       <div className="md:flex md:gap-x-6">
        <div className="mb-4 md:mb-0 hidden md:block">
@@ -55,6 +58,7 @@ const Home = () => {
       </div>
         <ScrollTop></ScrollTop>
     </div>
+   </div>
   )
 }
 

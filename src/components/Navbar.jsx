@@ -9,7 +9,7 @@ import { Expand } from '@theme-toggles/react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import FilterDivMobile from './FilterDivMobile';
 
-const Navbar = () => {
+const Navbar = ({setLoadingStatus}) => {
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -34,6 +34,7 @@ const Navbar = () => {
   const [searchKey, setSearchKey] = useState('');
 
   const searchMovie = async () => {
+    setLoadingStatus(true);
     navigate("/");
     let res = {};
     if (searchKey !== '') {
@@ -42,6 +43,7 @@ const Navbar = () => {
       res = await api.get(`movie/popular?api_key=${api_key}`);
     }
     dispatch(fetchMovies(res.data.results))
+    setLoadingStatus(false);
 
   }
 
