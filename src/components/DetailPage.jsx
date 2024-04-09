@@ -10,6 +10,7 @@ import DetailPlaceholder from './DetailPlaceholder';
 import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
+import ScrollTop from './ScrollTop';
 
 const DetailPage = () => {
 
@@ -39,7 +40,8 @@ const DetailPage = () => {
 
 
   return (
-    <div className=' bg-slate-100 dark:bg-gray-900'>
+    <div className=' bg-slate-100 dark:bg-gray-900 relative'>
+      <ScrollTop></ScrollTop>
 
       {JSON.stringify(movie) != "{}" && loadingStatus === false ? (
         <div className="">
@@ -67,7 +69,7 @@ const DetailPage = () => {
               <p className='mb-4'>{movie.status}</p>
 
               <p className='font-semibold'>Original Language</p>
-              <p className='mb-4'>{movie.original_language}</p>
+              <p className='mb-4'>{movie.original_language.toUpperCase()}</p>
 
               <p className=' font-semibold'>Budget</p>
               <p className='mb-4'>${movie.budget}</p>

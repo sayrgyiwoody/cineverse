@@ -33,7 +33,7 @@ const ScrollTop = () => {
     <div>
     {
         isVisible && (
-        <button className='fixed right-2 bottom-4 text-white  rounded-full flex items-center justify-center w-12 h-12 bg-primary hover:bg-primaryHover' onClick={scrollToTop} >
+        <button className='fixed z-50 right-2 bottom-4 text-white  rounded-full flex items-center justify-center w-12 h-12 bg-primary hover:bg-primaryHover' onClick={scrollToTop} >
         <BiArrowToTop className='w-8 h-8' />
         </button>
     )}

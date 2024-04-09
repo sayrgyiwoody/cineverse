@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NotFound = () => {
     return (
         <div>
-            <div class="flex flex-col justify-center items-center mx-auto">
+            <div class="flex min-h-screen flex-col justify-center items-center mx-auto bg-slate-100 dark:bg-gray-900">
                 <img src='public/images/notFound.png' width="400" alt="notFound" />
                 <p class="text-center dark:text-slate-100">
                     The page you are trying to access doesn't exist or has been moved.<br class="d-none d-md-block" />
