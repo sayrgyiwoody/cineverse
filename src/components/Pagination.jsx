@@ -1,63 +1,91 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setCurrentPage } from '../redux/action/movie';
+
 
 const Pagination = () => {
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth" 
-    });
-  };
-
   let dispatch = useDispatch();
 
-  let totalPage = useSelector((state)=> state.movie.totalPage);
+  let totalPages = useSelector((state) => state.movie.totalPage);
+  let currentPage = useSelector((state) => state.movie.currentPage);
 
-  const handlePagination = (value) => {
-    scrollToTop();
-    dispatch(setCurrentPage(value));
+  const generatePaginationNumbers = () => {
+    let shownPages = 3;
+    let paginationNumbers = [];
+    if (currentPage > totalPages - shownPages) {
+      paginationNumbers.push(totalPages - 2, totalPages - 1, totalPages);
+    } else {
+        paginationNumbers.push(currentPage, currentPage + 1, currentPage + 2, '...', totalPages);
+    }
+    return paginationNumbers;
   }
 
+  const handlePageClick = (pageNumber) => {
+
+
+    if (typeof pageNumber === 'number') {
+      if (pageNumber < 1 || pageNumber > totalPages) {
+      }else {
+        dispatch(setCurrentPage(pageNumber));
+      }
+    }
+
+  };
+
   return (
-    <div>
-    <nav aria-label="Page navigation example">
-  <ul className="flex items-center -space-x-px h-10 text-base mt-5">
-    <li>
-      <a href="#" className="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span className="sr-only">Previous</span>
-        <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <button onClick={() => handlePagination(1)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</button>
-    </li>
-    <li>
-      <button onClick={() => handlePagination(2)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</button>
-    </li>
-    <li>
-      <button onClick={() => handlePagination(3)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</button>
-    </li>
-    <li>
-      <button onClick={() => handlePagination(4)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</button>
-    </li>
-    
-    <li>
-      <button onClick={() => handlePagination(totalPage)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{totalPage}</button>
-    </li>
-    <li>
-      <button className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span className="sr-only">Next</span>
-        <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-        </svg>
-      </button>
-    </li>
-  </ul>
-</nav>
+    <div className=" flex items-center justify-between   px-4 py-3 sm:px-6">
+      {/* <div className="flex flex-1 justify-between sm:hidden">
+        <div
+          onClick={() => handlePageClick(currentPage - 1)}
+          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
+          Previous
+        </div>
+        <div
+          onClick={() => handlePageClick(currentPage + 1)}
+          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
+          Next
+        </div>
+      </div> */}
+      <div className=" sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm text-gray-700 dark:text-slate-200 mb-3 md:mb-0">
+            Showing 20 movies  from 
+            <span className="font-medium"> {totalPages}</span> pages
+          </p>
+        </div>
+        <div>
+          <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+            <div
+              onClick={() => handlePageClick(currentPage - 1)}
+              className="relative cursor-pointer inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white dark:bg-gray-950"
+            >
+              <span className="sr-only">Previous</span>
+              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+            </div>
+            {generatePaginationNumbers().map((pageNumber, index) => (
+              <div key={index}
+                onClick={() => handlePageClick(pageNumber)}
+                className={`relative z-10 inline-flex items-center cursor-pointer   ${currentPage == pageNumber ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 text-gray-400 ring-1 ring-inset ring-gray-300'}  px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+              >
+                {pageNumber}
+              </div>
+            ))}
+
+
+            <div
+              onClick={() => handlePageClick(currentPage + 1)}
+              className="relative cursor-pointer inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white dark:bg-gray-950"
+            >
+              <span className="sr-only">Next</span>
+              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+            </div>
+          </nav>
+        </div>
+      </div>
     </div>
   )
 }

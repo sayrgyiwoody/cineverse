@@ -15,15 +15,20 @@ const MovieList = ({ loadingStatus }) => {
 
 
     return (
-        <div className=' grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 '>
+        <div>
+            <div className=' grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 '>
             {
                 movies.map((movie,index)=>(
                     <MovieCard key={movie.id} data={movie}></MovieCard>
                 ))
             }
 
-            <Pagination></Pagination>
+            
 
+        </div>
+        <div className="md:mt-6 mt-3 md:mb-9 ">
+        <Pagination></Pagination>
+        </div>
         </div>
     )
 }

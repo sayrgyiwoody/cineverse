@@ -8,6 +8,7 @@ import Pagination from './Pagination'
 import PlaceHolderList from './PlaceHolderList'
 import ScrollTop from './ScrollTop'
 import Navbar from './Navbar'
+import { setLoadingStatus } from '../redux/action/loading'
 
 const Home = () => {
 
@@ -15,20 +16,28 @@ const Home = () => {
 
   let dispatch = useDispatch();
 
-  const [loadingStatus, setLoadingStatus] = useState(true);
+  let loadingStatus = useSelector((state)=>state.loading.isLoading);
   
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" 
+    });
+  };
 
   const getMovies = async () => {
-    setLoadingStatus(true);
+    dispatch(setLoadingStatus(true));
 
     let res = await api.get(`movie/popular?api_key=${api_key}&page=${currentPage}`);
-
     dispatch(fetchMovies(res.data.results))
-    dispatch(setTotalPage(res.data.total_pages))
-    setLoadingStatus(false);
+    // dispatch(setTotalPage(res.data.total_pages))
+    dispatch(setTotalPage(112))
+
+    dispatch(setLoadingStatus(false));
   }
 
   useEffect(() => {
+    scrollToTop();
     getMovies();
 
     return () => {
@@ -39,7 +48,6 @@ const Home = () => {
 
   return (
    <div>
-     <Navbar setLoadingStatus={setLoadingStatus}></Navbar>
     <div className='relative min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:p-6'>
       <div className="md:flex md:gap-x-6">
        <div className="mb-4 md:mb-0 hidden md:block">

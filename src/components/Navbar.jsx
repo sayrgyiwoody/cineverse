@@ -8,8 +8,9 @@ import "../../node_modules/@theme-toggles/react/css/Expand.css"
 import { Expand } from '@theme-toggles/react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import FilterDivMobile from './FilterDivMobile';
+import { setLoadingStatus } from '../redux/action/loading';
 
-const Navbar = ({setLoadingStatus}) => {
+const Navbar = () => {
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -34,7 +35,7 @@ const Navbar = ({setLoadingStatus}) => {
   const [searchKey, setSearchKey] = useState('');
 
   const searchMovie = async () => {
-    setLoadingStatus(true);
+    dispatch(setLoadingStatus(true));
     navigate("/");
     let res = {};
     if (searchKey !== '') {
@@ -43,7 +44,7 @@ const Navbar = ({setLoadingStatus}) => {
       res = await api.get(`movie/popular?api_key=${api_key}`);
     }
     dispatch(fetchMovies(res.data.results))
-    setLoadingStatus(false);
+    dispatch(setLoadingStatus(false));
 
   }
 
