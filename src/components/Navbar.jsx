@@ -41,7 +41,6 @@ const Navbar = () => {
     } else {
       res = await api.get(`movie/popular?api_key=${api_key}`);
     }
-    console.log(res.data)
     dispatch(fetchMovies(res.data.results))
 
   }

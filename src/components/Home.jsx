@@ -18,6 +18,8 @@ const Home = () => {
   
 
   const getMovies = async () => {
+    setLoadingStatus(true);
+
     let res = await api.get(`movie/popular?api_key=${api_key}&page=${currentPage}`);
 
     dispatch(fetchMovies(res.data.results))

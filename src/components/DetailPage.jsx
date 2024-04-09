@@ -23,6 +23,7 @@ const DetailPage = () => {
   const [loadingStatus, setLoadingStatus] = useState(true);
 
   const getDetail = async () => {
+    setLoadingStatus(true);
     let res = await api.get(`movie/${movieId}?api_key=${api_key}&append_to_response=credits`);
     dispatch(selectMovie(res.data));
     setLoadingStatus(false);
