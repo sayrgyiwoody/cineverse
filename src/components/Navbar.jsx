@@ -55,10 +55,10 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/images/logo.svg" className="h-8" alt="Logo" />
         </Link>
-        <div onClick={handleToggle} className=" cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-10 h-10 flex items-center justify-center border-[1.5px] rounded-full">
-          <Expand toggled={isDarkMode} reversed />
+        <div onClick={handleToggle} className="cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-10 h-10 flex items-center justify-center border-[1.5px] rounded-full">
+  <Expand toggled={isDarkMode} className=' text-xl'  />
+</div>
 
-        </div>
         <div className="flex md:order-2">
           <button onClick={() => setMenuStatus(true)} type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -80,10 +80,10 @@ const Navbar = () => {
             }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
           </div>
           <span className="sr-only">Open main menu</span>
-          <div onClick={() => setMenuStatus((prev) => !prev)} className={`${menuStyles.menuIcon} ${menuStatus && menuStyles.show} ms-4 md:hidden bg-gray-100  dark:bg-zinc-600   border border-gray-200  dark:border-0 rounded-md`}>
-            <span className="bg-zinc-800 dark:bg-white "></span>
-            <span className="bg-zinc-800 dark:bg-white "></span>
-            <span className="bg-zinc-800 dark:bg-white "></span>
+          <div onClick={() => setMenuStatus((prev) => !prev)} className={`${menuStyles.menuIcon} ${menuStatus && menuStyles.show} ms-4 md:hidden bg-gray-100  dark:bg-gray-600   border border-gray-200  dark:border-0 rounded-md`}>
+            <span className="bg-gray-800 dark:bg-white "></span>
+            <span className="bg-gray-800 dark:bg-white "></span>
+            <span className="bg-gray-800 dark:bg-white "></span>
           </div>
         </div>
 

@@ -5,8 +5,11 @@ import { AiFillStar } from "react-icons/ai";
 import { MdOutlineDateRange } from "react-icons/md";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useSelector } from 'react-redux';
 
 const MovieCard = ({ data }) => {
+
+    let isDarkMode = useSelector((state)=>state.darkMode.isDarkMode);
 
     const getPercent = (vote_average) => {
         return Math.round(vote_average * 10);
@@ -37,7 +40,7 @@ const MovieCard = ({ data }) => {
 
     return (
         <Link to={`/detail/${data.id}`}>
-            <div key={data.id} className="max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
+            <div  className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow dark:bg-gray-800 dark:border-gray-700">
 
                 <img className="rounded-t-xl" src={data.poster_path != null ? image_api + data.poster_path : '/images/default.jpg'} alt="" />
 
@@ -45,7 +48,7 @@ const MovieCard = ({ data }) => {
 
                 <div className="px-5 py-3 relative">
                     <div className=" w-14 h-14 absolute -top-7 bg-white dark:bg-gray-700 rounded-full p-1">
-                        <CircularProgressbar styles={buildStyles(getRadialStyle(getPercent(data.vote_average)))} value={getPercent(data.vote_average)} text={`${getPercent(data.vote_average)}%`} />
+                        <CircularProgressbar styles={buildStyles(getRadialStyle(getPercent(data.vote_average)))} value={getPercent(data.vote_average)} text={`${data.vote_average ? getPercent(data.vote_average) + '%' : 'NA'}`} />
 
                     </div>
                     <h5 className=" mt-5 mb-1 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
