@@ -86,7 +86,7 @@ const FilterDiv = () => {
   return (
     <div >
 
-      <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3' >
+      <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3 shadow-sm' >
         <h2 id="accordion-collapse-heading-1">
           <button onClick={() => toggleSorting()} type="button" className={`${showSorting ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full  px-5 py-2 md:p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-200 md:hover:bg-gray-50 md:dark:hover:bg-gray-700 gap-3`}>
             <span>Sort Movies</span>
@@ -121,7 +121,7 @@ const FilterDiv = () => {
 
       </div>
 
-      <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3' >
+      <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3 shadow-sm' >
         <h2 id="accordion-collapse-heading-1">
           <button onClick={() => toggleFilter()} type="button" className={`${showFilter ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full  px-5 py-2 md:p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-200 md:hover:bg-gray-50 md:dark:hover:bg-gray-700 gap-3`}>
             <span>Filter Movies</span>
@@ -172,7 +172,7 @@ const FilterDiv = () => {
 
       </div>
 
-      <button onClick={() => filterMovies()} type="button" className="w-full text-white bg-primary hover:bg-primaryHover focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-primary dark:hover:bg-primaryHover focus:outline-none dark:focus:ring-blue-800">Search</button>
+      <button onClick={() => filterMovies()} type="button" className="w-full text-white bg-primary hover:bg-primaryHover focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2 dark:bg-primary dark:hover:bg-primaryHover focus:outline-none ">Search</button>
 
     </div>
   )

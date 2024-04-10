@@ -74,8 +74,8 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/images/logo.svg" className="h-8" alt="Logo" />
         </Link>
-        <div onClick={handleToggle} className="cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-10 h-10 flex items-center justify-center border-[1.5px] rounded-full">
-          <Expand toggled={isDarkMode} className=' text-xl' />
+        <div onClick={handleToggle} className="cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-12 h-12 flex items-center justify-center border-[1.5px] rounded-full">
+          <Expand toggled={isDarkMode} className=' text-2xl' />
         </div>
 
         <div className="flex md:order-2">
@@ -158,7 +158,7 @@ const Navbar = () => {
                     <span className="sr-only">Close modal</span>
                 </button>
             </div>
-            <div className="p-4">
+            <div className="p-4 bg-slate-100 dark:bg-gray-900 rounded-xl">
             <FilterDiv></FilterDiv>
             </div>
         </div>
