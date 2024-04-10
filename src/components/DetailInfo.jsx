@@ -61,7 +61,7 @@ const DetailInfo = ({movie}) => {
 <div className=' ' style={overlayStyle} ></div>
 
 <div className="z-10 relative max-w-6xl px-10 pt-6 pb-10 mx-auto">
-<Link to="/" className=" duration-150 py-2.5 px-5 me-2 mb-5 flex items-center w-fit gap-x-1 text-sm font-medium text-primary focus:outline-none  rounded-lg border border-primary  z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-primary dark:border-primary hover:bg-primaryHover hover:text-white dark:hover:text-white dark:hover:bg-primaryHover">
+<Link to="/" className=" duration-150 py-2.5 px-5 me-2 mb-5 flex items-center w-fit gap-x-1 text-sm font-medium text-primary focus:outline-none  rounded-lg border-[1.5px] border-primary  z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-primary dark:border-primary hover:bg-primaryHover hover:text-white dark:hover:text-white dark:hover:bg-primaryHover">
       <IoMdArrowRoundBack className=' w-5 h-5 inline-block' />
       Back Home</Link>
   <div className=" md:flex gap-x-10 justify-center">
