@@ -136,15 +136,15 @@ const FilterDiv = () => {
             <div className="border-b border-b-gray-300 dark:border-b-gray-700 px-4 py-2 md:p-5">
               <p className="mb-4 text-lg text-gray-900 font-semibold dark:text-white">Release Dates</p>
 
-              <div className="relative flex  items-center gap-x-4 mb-4">
-                <label htmlFor="" className=' text-gray-600 dark:text-slate-200'>From </label>
-                <input onChange={(e) => setStartDate(e.target.value)} value={startDate} name="start" type="date" className=" mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
+              <div className="grid grid-cols-5 items-center gap-x-4 mb-4">
+                <label htmlFor="" className=' ms-1 text-gray-600 dark:text-slate-200'>From</label>
+                <input onChange={(e) => setStartDate(e.target.value)} value={startDate} name="start" type="date" className=" col-span-4 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
               </div>
 
-              <div className="relative flex  items-center gap-x-4 mb-4">
+              <div className="grid grid-cols-5 items-center gap-x-4 mb-4">
 
-                <label htmlFor="" className=' text-gray-600 dark:text-slate-200'>To </label>
-                <input onChange={(e) => setEndDate(e.target.value)} value={endDate} name="start" type="date" className=" mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
+                <label htmlFor="" className=' ms-1 text-gray-600 dark:text-slate-200'>To</label>
+                <input onChange={(e) => setEndDate(e.target.value)} value={endDate} name="start" type="date" className=" col-span-4 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
 
               </div>
 

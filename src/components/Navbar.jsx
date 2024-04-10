@@ -158,7 +158,7 @@ const Navbar = () => {
                     <span className="sr-only">Close modal</span>
                 </button>
             </div>
-            <div className="p-5">
+            <div className="p-4">
             <FilterDiv></FilterDiv>
             </div>
         </div>
