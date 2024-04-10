@@ -54,7 +54,8 @@ const Home = () => {
        <div className="mb-4 md:mb-0 hidden md:block">
        <FilterDiv></FilterDiv>
        </div>
-        <div className="">
+        <div >
+
         {loadingStatus !== true ? (
           <MovieList></MovieList>
         ) : (

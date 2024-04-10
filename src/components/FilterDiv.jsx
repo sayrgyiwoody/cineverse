@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import useToggle from '../hooks/useToggle'
 import { api, api_key } from '../assets/api';
-import Datepicker from 'react-tailwindcss-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, setCurrentPage, setFilterData, setTotalPage } from '../redux/action/movie';
 import { setLoadingStatus } from '../redux/action/loading';
+import { useNavigate } from 'react-router';
 
 const FilterDiv = () => {
 
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   let currentPage = useSelector((state) => state.movie.currentPage);
 
@@ -52,7 +53,8 @@ const FilterDiv = () => {
       sortBy: selectedSorting,
       startDate : startDate,
       endDate : endDate,
-    }))
+    }));
+    navigate("/");
   }
 
 
@@ -86,7 +88,7 @@ const FilterDiv = () => {
 
       <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3' >
         <h2 id="accordion-collapse-heading-1">
-          <button onClick={() => toggleSorting()} type="button" className={`${showSorting ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 gap-3`}>
+          <button onClick={() => toggleSorting()} type="button" className={`${showSorting ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full  px-5 py-2 md:p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-200 md:hover:bg-gray-50 md:dark:hover:bg-gray-700 gap-3`}>
             <span>Sort Movies</span>
             <svg data-accordion-icon className={`w-3 h-3 ${showSorting ? 'rotate-180' : 'rotate-90'} shrink-0`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
@@ -121,7 +123,7 @@ const FilterDiv = () => {
 
       <div className='bg-white dark:bg-gray-800 rounded-xl md:w-[17rem] mb-3' >
         <h2 id="accordion-collapse-heading-1">
-          <button onClick={() => toggleFilter()} type="button" className={`${showFilter ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 gap-3`}>
+          <button onClick={() => toggleFilter()} type="button" className={`${showFilter ? 'rounded-t-xl' : 'rounded-xl'} flex items-center justify-between w-full  px-5 py-2 md:p-5 font-medium rtl:text-right text-gray-700 border border-gray-200  focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-200 md:hover:bg-gray-50 md:dark:hover:bg-gray-700 gap-3`}>
             <span>Filter Movies</span>
             <svg data-accordion-icon className={`w-3 h-3 ${showFilter ? 'rotate-180' : 'rotate-90'} shrink-0`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
@@ -131,8 +133,8 @@ const FilterDiv = () => {
         <div className={`${showFilter ? '' : 'hidden'}`}>
           <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-800">
 
-            <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
-              <p className="mb-4 text-gray-900 font-semibold dark:text-white">Release Dates</p>
+            <div className="border-b border-b-gray-300 dark:border-b-gray-700 px-4 py-2 md:p-5">
+              <p className="mb-4 text-lg text-gray-900 font-semibold dark:text-white">Release Dates</p>
 
               <div className="relative flex  items-center gap-x-4 mb-4">
                 <label htmlFor="" className=' text-gray-600 dark:text-slate-200'>From </label>
@@ -148,12 +150,12 @@ const FilterDiv = () => {
 
             </div>
 
-            <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
-              <p className="mb-4 text-gray-900 font-semibold dark:text-white">Genres</p>
+            <div className="border-b border-b-gray-300 dark:border-b-gray-700 px-4 py-2 md:p-5">
+              <p className="mb-4 text-lg text-gray-900 font-semibold dark:text-white">Genres</p>
 
               <div className="flex flex-wrap ">
                 {genres.map((genre, index) => (
-                  <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-300 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover hover:text-white'
+                  <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-200 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover hover:text-white'
                     }`}>{genre.name}</p>
                 ))}
               </div>
