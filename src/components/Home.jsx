@@ -30,7 +30,7 @@ const Home = () => {
   const getMovies = async () => {
     dispatch(setLoadingStatus(true));
 
-    let res = await api.get(`/discover/movie?with_genres=${filterData.genres}&api_key=${api_key}&page=${currentPage}`);
+    let res = await api.get(`/discover/movie?sort_by=${filterData.sortBy}&primary_release_date.gte=${filterData.startDate}&primary_release_date.lte=${filterData.endDate}&with_genres=${filterData.genres}&api_key=${api_key}&page=${currentPage}`);
     dispatch(fetchMovies(res.data.results))
     dispatch(setTotalPage(res.data.total_pages))
     // dispatch(setTotalPage(112))

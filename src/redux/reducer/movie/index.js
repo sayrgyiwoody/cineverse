@@ -8,6 +8,9 @@ const initialState = {
     isFilter : false,
     filterData : {
         genres : ',',
+        sortBy : 'popularity.desc',
+        startDate : '',
+        endDate : '',   
     },
 }
 

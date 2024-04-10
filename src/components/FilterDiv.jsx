@@ -20,11 +20,25 @@ const FilterDiv = () => {
   const [showFilter, toggleFilter] = useToggle(false);
 
   const [genres, setGenres] = useState([]);
+  const [selectedSorting, setSelectedSorting] = useState("popularity.desc")
 
   const fetchGenreIds = async () => {
     let res = await api.get(`/genre/movie/list?api_key=${api_key}`);
     setGenres(res.data.genres);
   }
+
+  // Function to get current date in YYYY-MM-DD format
+  const getCurrentDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  // State to store the selected start date
+  const [startDate, setStartDate] = useState(''); // Initialize with current date
+  const [endDate, setEndDate] = useState(getCurrentDate());
 
   useEffect(() => {
     fetchGenreIds();
@@ -34,7 +48,10 @@ const FilterDiv = () => {
   const filterMovies = async () => {
     dispatch(setCurrentPage(1));
     dispatch(setFilterData({
-      genres : getSelectedGenresString(),
+      genres: getSelectedGenresString(),
+      sortBy: selectedSorting,
+      startDate : startDate,
+      endDate : endDate,
     }))
   }
 
@@ -77,9 +94,25 @@ const FilterDiv = () => {
           </button>
         </h2>
         <div className={`${showSorting ? '' : 'hidden'}`}>
-          <div className="p-5  border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-            <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-            <p className="text-gray-500 dark:text-gray-400">Action</p>
+          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+            <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
+              <p className="mb-4 text-gray-900 font-semibold dark:text-white">Sort Results By</p>
+              <select
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                value={selectedSorting}
+                onChange={(e) => setSelectedSorting(e.target.value)}
+              >
+                <option value="popularity.desc">Popularity Descending</option>
+                <option value="popularity.asc">Popularity Ascending</option>
+                <option value="vote_average.desc">Rating Descending</option>
+                <option value="vote_average.asc">Rating Ascending</option>
+                <option value="primary_release_date.desc">Release Date Descending</option>
+                <option value="primary_release_date.asc">Release Date Ascending</option>
+                <option value="title.desc">Title (A-Z)</option>
+                <option value="title.asc">Title (Z-A)</option>
+              </select>
+
+            </div>
           </div>
         </div>
 
@@ -96,28 +129,40 @@ const FilterDiv = () => {
           </button>
         </h2>
         <div className={`${showFilter ? '' : 'hidden'}`}>
-          <div className="p-5  border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
 
-            {/* <p className="mb-4 text-gray-900 font-semibold dark:text-white">Release Date</p>
+            <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
+              <p className="mb-4 text-gray-900 font-semibold dark:text-white">Release Dates</p>
 
+              <div className="relative flex  items-center gap-x-4 mb-4">
+                <label htmlFor="" className=' text-gray-600 dark:text-slate-200'>From </label>
+                <input onChange={(e) => setStartDate(e.target.value)} value={startDate} name="start" type="date" className=" mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
+              </div>
 
+              <div className="relative flex  items-center gap-x-4 mb-4">
 
-            <Datepicker
-              value={value}
-              onChange={handleValueChange}
-            /> */}
+                <label htmlFor="" className=' text-gray-600 dark:text-slate-200'>To </label>
+                <input onChange={(e) => setEndDate(e.target.value)} value={endDate} name="start" type="date" className=" mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Select date start" />
 
+              </div>
 
-
-
-            <p className="mb-4 text-gray-900 font-semibold dark:text-white">Genres</p>
-
-            <div className="flex flex-wrap ">
-              {genres.map((genre, index) => (
-                <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-300 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover hover:text-white'
-                  }`}>{genre.name}</p>
-              ))}
             </div>
+
+            <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
+              <p className="mb-4 text-gray-900 font-semibold dark:text-white">Genres</p>
+
+              <div className="flex flex-wrap ">
+                {genres.map((genre, index) => (
+                  <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-300 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover hover:text-white'
+                    }`}>{genre.name}</p>
+                ))}
+              </div>
+            </div>
+
+
+
+
+
 
           </div>
         </div>
