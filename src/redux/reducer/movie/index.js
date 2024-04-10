@@ -5,6 +5,7 @@ const initialState = {
     movie : {},
     currentPage : 1,
     totalPage : 1,
+    isFiltered : false,
     filterData : {
         genres : ',',
         sortBy : 'popularity.desc',
@@ -43,6 +44,11 @@ export const movieReducer = (state = initialState , action) => {
         case ActionType.SET_IS_FILTER:
         return {
             ...state,isFilter : action.payload
+        }
+
+        case ActionType.SET_FILTER_DATA:
+        return {
+            ...state,filterData : action.payload
         }
 
         case ActionType.SET_FILTER_DATA:
