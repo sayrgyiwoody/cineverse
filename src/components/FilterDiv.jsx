@@ -94,7 +94,7 @@ const FilterDiv = () => {
           </button>
         </h2>
         <div className={`${showSorting ? '' : 'hidden'}`}>
-          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
               <p className="mb-4 text-gray-900 font-semibold dark:text-white">Sort Results By</p>
               <select
@@ -129,7 +129,7 @@ const FilterDiv = () => {
           </button>
         </h2>
         <div className={`${showFilter ? '' : 'hidden'}`}>
-          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          <div className=" border rounded-b-xl border-gray-200 dark:border-gray-700 dark:bg-gray-800">
 
             <div className="border-b border-b-gray-300 dark:border-b-gray-700 p-5">
               <p className="mb-4 text-gray-900 font-semibold dark:text-white">Release Dates</p>
