@@ -79,8 +79,9 @@ const Navbar = () => {
 
     <nav className="bg-white border-gray-200 dark:bg-gray-800">
       <div className={`max-w-screen-xl  flex flex-wrap items-center justify-between mx-auto p-4`}>
-        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/images/logo.svg" className="h-8" alt="Logo" />
+        <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+          <img src="/images/logo.svg" className="h-10" alt="Logo" />
+          <p className=' text-gray-800 dark:text-slate-100 font-medium text-lg'>Cineverse</p>
         </Link>
         <div onClick={handleToggle} className="cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-12 h-12 flex items-center justify-center border-[1.5px] rounded-full">
           <Expand toggled={isDarkMode} className=' text-2xl' />
