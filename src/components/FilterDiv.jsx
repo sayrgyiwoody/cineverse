@@ -155,7 +155,7 @@ const FilterDiv = () => {
 
               <div className="flex flex-wrap ">
                 {genres.map((genre, index) => (
-                  <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-200 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover hover:text-white'
+                  <p onClick={() => selectGenre(genre.id)} key={index} className={`text-gray-600 me-2 mb-2 text-sm cursor-pointer dark:text-gray-200 rounded-3xl border px-3 py-1 flex items-center justify-center ${isSelected(genre.id) ? 'bg-primary text-white' : 'md:hover:bg-primaryHover md:hover:text-white'
                     }`}>{genre.name}</p>
                 ))}
               </div>

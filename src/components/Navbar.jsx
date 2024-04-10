@@ -145,8 +145,8 @@ const Navbar = () => {
 
 
       </div>
-      <div className={` ${showMobileFilter ? '' : 'hidden'} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full`}>
-    <div className="relative px-5 bg-[#141414cc] dark:bg-[#191616cc] w-full min-h-full flex items-center justify-center">
+      <div className={` ${showMobileFilter ? '' : 'hidden'} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 bg-[#141414cc] dark:bg-[#191616cc] h-full`}>
+    <div className="relative px-5 w-full min-h-full flex items-center justify-center">
         <div className={` ${animateStyle.animateBounceIn} relative z-40 bg-white rounded-lg shadow dark:bg-gray-900 border-[1.5px] dark:border-gray-600 w-full`}>
             <div className="flex items-center justify-between py-2 px-2 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
