@@ -58,11 +58,18 @@ const Navbar = () => {
   }
 
   const handleToggleFilter = () => {
+    setFilterSubmitted(false);
     if(!showMobileFilter){
       setMenuStatus(false);
     }
     toggleMobileFilter();
   }
+
+  const [filterSubmitted,setFilterSubmitted] = useState(false);
+
+  const handleFilterSubmit = () => {
+    setFilterSubmitted(true);
+  };
 
   //-----
 
@@ -126,7 +133,7 @@ const Navbar = () => {
                 }
               }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Search..." />
             </div>
-          <button onClick={()=>handleToggleFilter()} type="button" className="col-span-2 h-full justify-center flex items-center gap-x-2 px-5 me-2 mb-2 dark:bg-gray-700 font-medium text-gray-900 focus:outline-none bg-gray-50 shadow-sm rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-800 focus:z-10 focus:ring-1 focus:ring-primary dark:focus:ring-primary dark:text-gray-400 dark:border-gray-600 dark:hover:text-white ">Filter <IoFilter /></button>
+          <button onClick={()=>handleToggleFilter()} type="button" className=" md:hidden col-span-2 h-full justify-center flex items-center gap-x-2 px-5 me-2 mb-2 dark:bg-gray-700 font-medium text-gray-900 focus:outline-none bg-gray-50 shadow-sm rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-800 focus:z-10 focus:ring-1 focus:ring-primary dark:focus:ring-primary dark:text-gray-400 dark:border-gray-600 dark:hover:text-white ">Filter <IoFilter /></button>
 
           </div>
           
@@ -145,7 +152,7 @@ const Navbar = () => {
 
 
       </div>
-      <div className={` ${showMobileFilter ? '' : 'hidden'} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 bg-[#141414cc] dark:bg-[#191616cc] h-full`}>
+      <div className={` ${showMobileFilter && !filterSubmitted ? '' : 'hidden'} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 bg-[#141414cc] dark:bg-[#191616cc] h-full`}>
     <div className="relative px-5 w-full min-h-full flex items-center justify-center">
         <div className={` ${animateStyle.animateBounceIn} relative z-40 bg-white rounded-lg shadow dark:bg-gray-900 border-[1.5px] dark:border-gray-600 w-full`}>
             <div className="flex items-center justify-between py-2 px-2 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -159,7 +166,7 @@ const Navbar = () => {
                 </button>
             </div>
             <div className="p-4 bg-slate-100 dark:bg-gray-900 rounded-xl">
-            <FilterDiv></FilterDiv>
+            <FilterDiv handleFilterSubmit={handleFilterSubmit}></FilterDiv>
             </div>
         </div>
     </div>

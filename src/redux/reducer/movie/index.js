@@ -5,7 +5,6 @@ const initialState = {
     movie : {},
     currentPage : 1,
     totalPage : 1,
-    isFilter : false,
     filterData : {
         genres : ',',
         sortBy : 'popularity.desc',
