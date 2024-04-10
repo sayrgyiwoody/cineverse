@@ -9,6 +9,7 @@ import { Expand } from '@theme-toggles/react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import FilterDivMobile from './FilterDivMobile';
 import { setLoadingStatus } from '../redux/action/loading';
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
 
@@ -48,6 +49,10 @@ const Navbar = () => {
 
   }
 
+  const clearSearchInput = () => {
+    setSearchKey('');
+  }
+
   //-----
 
   return (
@@ -76,11 +81,14 @@ const Navbar = () => {
               </svg>
               <span className="sr-only">Search icon</span>
             </div>
+            <div onClick={() => clearSearchInput()} className={` ${searchKey ? '' : 'hidden'} absolute flex items-center justify-center right-2 top-2  cursor-pointer`}>
+              <RxCross2 className=' w-5 h-5 text-gray-600 dark:text-gray-200 hover:text-primaryHover dark:hover:text-primary' />
+            </div>
             <input value={searchKey} onChange={(e) => setSearchKey(e.target.value)} onKeyUp={(e) => {
               if (e.key === "Enter") {
                 searchMovie();
               }
-            }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+            }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Search..." />
           </div>
           <span className="sr-only">Open main menu</span>
           <div onClick={() => setMenuStatus((prev) => !prev)} className={`${menuStyles.menuIcon} ${menuStatus && menuStyles.show} ms-4 md:hidden bg-gray-100  dark:bg-gray-600   border border-gray-200  dark:border-0 rounded-md`}>
@@ -97,16 +105,19 @@ const Navbar = () => {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
             </div>
+            <div onClick={() => clearSearchInput()} className={` ${searchKey ? '' : 'hidden'} absolute flex items-center justify-center right-2 top-2  cursor-pointer`}>
+              <RxCross2 className=' w-5 h-5 text-gray-600 dark:text-gray-200 hover:text-primaryHover dark:hover:text-primary' />
+            </div>
             <input value={searchKey} onChange={(e) => setSearchKey(e.target.value)} onKeyUp={(e) => {
               if (e.key === "Enter") {
                 searchMovie();
               }
-            }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+            }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Search..." />
 
 
           </div>
           <div className="md:hidden">
-          <FilterDivMobile></FilterDivMobile>
+            <FilterDivMobile></FilterDivMobile>
           </div>
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700">
             <li>
