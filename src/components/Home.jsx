@@ -12,7 +12,9 @@ import { setLoadingStatus } from '../redux/action/loading'
 
 const Home = () => {
 
-  let currentPage = useSelector((state) => state.movie.currentPage)
+  let currentPage = useSelector((state) => state.movie.currentPage);
+  let filterData = useSelector((state) => state.movie.filterData);
+
 
   let dispatch = useDispatch();
 
@@ -28,22 +30,21 @@ const Home = () => {
   const getMovies = async () => {
     dispatch(setLoadingStatus(true));
 
-    let res = await api.get(`movie/popular?api_key=${api_key}&page=${currentPage}`);
+    let res = await api.get(`/discover/movie?with_genres=${filterData.genres}&api_key=${api_key}&page=${currentPage}`);
     dispatch(fetchMovies(res.data.results))
-    // dispatch(setTotalPage(res.data.total_pages))
-    dispatch(setTotalPage(112))
-
+    dispatch(setTotalPage(res.data.total_pages))
+    // dispatch(setTotalPage(112))
     dispatch(setLoadingStatus(false));
   }
 
   useEffect(() => {
     scrollToTop();
-    getMovies();
+      getMovies();
 
     return () => {
       dispatch(fetchMovies([]));
     }
-  }, [currentPage])
+  }, [currentPage , filterData])
 
 
   return (

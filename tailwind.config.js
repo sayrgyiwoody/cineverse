@@ -4,6 +4,7 @@ export default {
   content: [
     "./index.html",
     "./node_modules/flowbite/**/*.js",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {

@@ -36,4 +36,10 @@ export const setTotalPage = (page) => {
     }
 }
 
+export const setFilterData = (data) => {
+    return {
+        type : ActionType.SET_FILTER_DATA,
+        payload : data,
+    }
+}
 
