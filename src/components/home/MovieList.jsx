@@ -40,8 +40,8 @@ const MovieList = ({ loadingStatus }) => {
                     <div className="w-full h-screen flex flex-col mt-10 md:mt-20 items-center">
                         <Lottie
                         options={defaultLottieOptions}
-                        height={400}
-                        width={400}
+                        height={300}
+                        width={300}
                     />
                     <p className=' text-gray-800 dark:text-slate-100 font-semibold'>Sorry , No Movie to Show</p>
                     </div>
