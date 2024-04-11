@@ -6,6 +6,7 @@ import DetailPage from './view/DetailPage'
 import NotFound from './view/NotFound'
 import Navbar from './components/layout/Navbar'
 
+
 function App() {
   const [count, setCount] = useState(0)
 

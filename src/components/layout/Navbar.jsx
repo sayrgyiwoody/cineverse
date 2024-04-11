@@ -42,16 +42,23 @@ const Navbar = () => {
   const searchMovie = async () => {
     dispatch(setLoadingStatus(true));
     navigate("/");
-    let res = {};
-    if (searchKey !== '') {
-      res = await api.get(`search/movie?query=${searchKey}&api_key=${api_key}`);
-    } else {
-      res = await api.get(`movie/popular?api_key=${api_key}`);
+    try {
+        let res = {};
+        if (searchKey !== '') {
+            res = await api.get(`search/movie?query=${searchKey}&api_key=${api_key}`);
+        } else {
+            res = await api.get(`movie/popular?api_key=${api_key}`);
+        }
+        dispatch(fetchMovies(res.data.results));
+    } catch (error) {
+        // Handle error (e.g., log, display error message)
+        console.error('Error searching movie:', error);
+    } finally {
+        // Ensure that loading status is set to false regardless of success or failure
+        dispatch(setLoadingStatus(false));
     }
-    dispatch(fetchMovies(res.data.results))
-    dispatch(setLoadingStatus(false));
+}
 
-  }
 
   const clearSearchInput = () => {
     setSearchKey('');
