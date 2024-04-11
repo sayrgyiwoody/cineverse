@@ -31,6 +31,7 @@ const Home = () => {
   };
 
   const getMovies = async () => {
+
     dispatch(setLoadingStatus(true));
     try {
         let res = await api.get(`/discover/movie?sort_by=${filterData.sortBy}&primary_release_date.gte=${filterData.startDate}&primary_release_date.lte=${filterData.endDate}&with_genres=${filterData.genres}&api_key=${api_key}&page=${currentPage}`);
@@ -62,7 +63,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className='relative min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:p-6'>
+      <div className='relative min-h-screen bg-slate-100 dark:bg-gray-900 p-3 md:px-14 md:py-6'>
         <div className="md:flex md:gap-x-6">
           <div className="mb-4 md:mb-0 hidden md:block">
             <FilterDiv></FilterDiv>

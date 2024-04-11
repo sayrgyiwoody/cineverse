@@ -14,7 +14,7 @@ const MovieList = ({ loadingStatus }) => {
         rendererSettings: {
           preserveAspectRatio: "xMidYMid slice"
         }
-      };
+    };
 
     let movies = [];
     movies = useSelector((state) => state.movie.movies);

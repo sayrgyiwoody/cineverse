@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import menuStyles from '../../assets/css/menu-icon.module.css'
 import { api, api_key } from '../../assets/api';
 import { useDispatch } from 'react-redux';
-import { fetchMovies, setCurrentPage, setFilterData } from '../../redux/action/movie';
-import { Link, useNavigate } from 'react-router-dom';
+import { fetchMovies, setCurrentPage, setFilterData, setTotalMovies, setTotalPage, storeSearchKey , } from '../../redux/action/movie';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../../../node_modules/@theme-toggles/react/css/Expand.css"
 import { Expand } from '@theme-toggles/react';
 import useLocalStorage from '../../hooks/useLocalStorage';
@@ -39,26 +39,16 @@ const Navbar = () => {
   // search movie 
   const [searchKey, setSearchKey] = useState('');
 
-  const searchMovie = async () => {
-    dispatch(setLoadingStatus(true));
-    navigate("/");
-    try {
-        let res = {};
-        if (searchKey !== '') {
-            res = await api.get(`search/movie?query=${searchKey}&api_key=${api_key}`);
-        } else {
-            res = await api.get(`movie/popular?api_key=${api_key}`);
-        }
-        dispatch(fetchMovies(res.data.results));
-    } catch (error) {
-        // Handle error (e.g., log, display error message)
-        console.error('Error searching movie:', error);
-    } finally {
-        // Ensure that loading status is set to false regardless of success or failure
-        dispatch(setLoadingStatus(false));
-    }
-}
-
+  
+  // handel search 
+  const handleSearch = () => {
+   if(searchKey){
+    dispatch(storeSearchKey(searchKey));
+    dispatch(setCurrentPage(1));
+    navigate("/searchMovies");
+    setMenuStatus(false);
+   }
+  }
 
   const clearSearchInput = () => {
     setSearchKey('');
@@ -125,7 +115,7 @@ const Navbar = () => {
             </div>
             <input value={searchKey} onChange={(e) => setSearchKey(e.target.value)} onKeyUp={(e) => {
               if (e.key === "Enter") {
-                searchMovie();
+                handleSearch();
               }
             }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Search..." />
           </div>
@@ -150,7 +140,7 @@ const Navbar = () => {
               </div>
               <input value={searchKey} onChange={(e) => setSearchKey(e.target.value)} onKeyUp={(e) => {
                 if (e.key === "Enter") {
-                  searchMovie();
+                  handleSearch();
                 }
               }} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Search..." />
             </div>

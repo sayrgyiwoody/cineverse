@@ -53,6 +53,11 @@ const DetailInfo = ({movie}) => {
       return `${hours}h ${remainingMinutes}m`;
     }
 
+    //redirect back to previous route
+    const redirectBack = () => {
+      history.back();
+    }
+
   return (
     <div>
       <div style={backgroundImageStyle} className=" relative bg-cover bg-top bg-no-repeat ">
@@ -60,9 +65,9 @@ const DetailInfo = ({movie}) => {
 <div className='bg-[#1a1919a7] dark:bg-[#151414d0]' style={overlayStyle} ></div>
 
 <div className="z-10 relative max-w-6xl px-10 pt-6 pb-10 mx-auto">
-<Link to="/" className=" duration-150 py-2.5 px-5 me-2 mb-5 flex items-center w-fit gap-x-1 text-sm font-medium text-primary focus:outline-none  rounded-lg border-[1.5px] border-primary  z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-primary dark:border-primary hover:bg-primaryHover hover:text-white dark:hover:text-white dark:hover:bg-primaryHover">
+<button onClick={()=>redirectBack()} className=" duration-150 py-2.5 px-5 me-2 mb-5 flex items-center w-fit gap-x-1 text-sm font-medium text-primary focus:outline-none  rounded-lg border-[1.5px] border-primary  z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-primary dark:border-primary hover:bg-primaryHover hover:text-white dark:hover:text-white dark:hover:bg-primaryHover">
       <IoMdArrowRoundBack className=' w-5 h-5 inline-block' />
-      Back Home</Link>
+      Back Home</button>
   <div className=" md:flex gap-x-10 justify-center">
   <img className="rounded-lg  md:w-1/5  z-20 mb-4 md:mb-0 " src={movie.poster_path != null ? image_api + movie.poster_path : '/images/default.jpg'} alt="" />
 

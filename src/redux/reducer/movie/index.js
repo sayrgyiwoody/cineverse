@@ -11,6 +11,8 @@ const initialState = {
         startDate : '',
         endDate : '',   
     },
+    totalMovies : 0,
+    searchKey : '',
 }
 
 export const movieReducer = (state = initialState , action) => {
@@ -48,6 +50,16 @@ export const movieReducer = (state = initialState , action) => {
         case ActionType.SET_FILTER_DATA:
         return {
             ...state,filterData : action.payload
+        }
+
+        case ActionType.SET_TOTAL_MOVIES:
+        return {
+            ...state,totalMovies : action.payload
+        }
+
+        case ActionType.STORE_SEARCH_KEY:
+        return {
+            ...state,searchKey : action.payload
         }
 
         default : 

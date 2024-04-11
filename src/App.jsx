@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router'
 import DetailPage from './view/DetailPage'
 import NotFound from './view/NotFound'
 import Navbar from './components/layout/Navbar'
+import SearchPage from './view/SearchPage'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Home></Home>}></Route>
+      <Route path='/searchMovies' element={<SearchPage></SearchPage>}></Route>
       <Route path='/detail/:movieId' element={<DetailPage></DetailPage>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
     </Routes>

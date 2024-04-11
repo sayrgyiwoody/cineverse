@@ -41,4 +41,19 @@ export const setFilterData = (data) => {
         type : ActionType.SET_FILTER_DATA,
         payload : data,
     }
+
+}
+
+export const setTotalMovies = (data) => {
+    return {
+        type : ActionType.SET_TOTAL_MOVIES,
+        payload : data,
+    }
+}
+
+export const storeSearchKey = (data) => {
+    return {
+        type : ActionType.STORE_SEARCH_KEY,
+        payload : data,
+    }
 }
