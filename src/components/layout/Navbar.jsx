@@ -14,7 +14,7 @@ import useToggle from '../../hooks/useToggle';
 import FilterDiv from '../home/FilterDiv';
 import animateStyle from '../../assets/css/animate.module.css'
 
-const Navbar = () => {
+const Navbar = ({navFix}) => {
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -86,7 +86,7 @@ const Navbar = () => {
   return (
 
 
-    <nav className="bg-white border-gray-200 dark:bg-gray-800">
+    <nav  className={`${navFix ? 'fixed w-full top-0 left-0 z-50 ' + animateStyle.fadeInTop : ''} bg-white border-gray-200 dark:bg-gray-800 shadow`}>
       <div className={`max-w-screen-xl  flex flex-wrap items-center justify-between mx-auto p-4`}>
         <button onClick={()=>reloadHome()} className="flex items-center space-x-1 rtl:space-x-reverse">
           <img src='/images/logo.svg' className="h-10" alt="Logo" />

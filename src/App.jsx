@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Home from './view/Home'
 import { Route, Routes } from 'react-router'
@@ -9,12 +9,28 @@ import SearchPage from './view/SearchPage'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [navFix ,setNavFix] = useState(false);
+
+  useEffect(() => {
+    const toggleNavFix = () => {
+      if (window.pageYOffset > 300) {
+        setNavFix(true);
+      } else {
+        setNavFix(false);
+      }
+    };
+    // Event listener to handle scroll
+    window.addEventListener('scroll', toggleNavFix);
+    
+    // Clean up the event listener
+    return () => window.removeEventListener('scroll', toggleNavFix);
+  },[]);
 
   return (
     <>
       
-    <Navbar></Navbar>
+    <Navbar navFix={navFix}></Navbar>
 
 
     <Routes>
