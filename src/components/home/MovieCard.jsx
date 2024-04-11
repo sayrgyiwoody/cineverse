@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { image_api } from '../assets/api'
+import { image_api } from '../../assets/api'
 import { AiFillStar } from "react-icons/ai";
 import { MdOutlineDateRange } from "react-icons/md";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';

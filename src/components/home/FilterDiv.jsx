@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import useToggle from '../hooks/useToggle'
-import { api, api_key } from '../assets/api';
+import useToggle from '../../hooks/useToggle'
+import { api, api_key } from '../../assets/api';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies, setCurrentPage, setFilterData, setTotalPage } from '../redux/action/movie';
-import { setLoadingStatus } from '../redux/action/loading';
+import { fetchMovies, setCurrentPage, setFilterData, setTotalPage } from '../../redux/action/movie';
+import { setLoadingStatus } from '../../redux/action/loading';
 import { useNavigate } from 'react-router';
 
 const FilterDiv = ({handleFilterSubmit}) => {

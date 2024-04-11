@@ -4,13 +4,13 @@ import { api_key, image_api } from '../assets/api';
 import { api } from '../assets/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMovie, removeSelectedMovie } from '../redux/action/movie';
-import DetailInfo from './DetailInfo';
-import CastSwiper from './CastSwiper';
-import DetailPlaceholder from './DetailPlaceholder';
+import DetailInfo from '../components/detail/DetailInfo';
+import CastSwiper from '../components/detail/CastSwiper';
+import DetailPlaceholder from '../components/placeholders/DetailPlaceholder';
 import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
-import ScrollTop from './ScrollTop';
+import ScrollTop from '../components/layout/ScrollTop';
 
 const DetailPage = () => {
 

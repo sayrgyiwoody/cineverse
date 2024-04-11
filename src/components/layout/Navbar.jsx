@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
-import menuStyles from '../assets/css/menu-icon.module.css'
-import { api, api_key } from '../assets/api';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies } from '../redux/action/movie';
+import React, { useEffect, useState } from 'react'
+import menuStyles from '../../assets/css/menu-icon.module.css'
+import { api, api_key } from '../../assets/api';
+import { useDispatch } from 'react-redux';
+import { fetchMovies, setCurrentPage, setFilterData } from '../../redux/action/movie';
 import { Link, useNavigate } from 'react-router-dom';
-import "../../node_modules/@theme-toggles/react/css/Expand.css"
+import "../../../node_modules/@theme-toggles/react/css/Expand.css"
 import { Expand } from '@theme-toggles/react';
-import useLocalStorage from '../hooks/useLocalStorage';
-import { setLoadingStatus } from '../redux/action/loading';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { setLoadingStatus } from '../../redux/action/loading';
 import { RxCross2 } from "react-icons/rx";
 import { IoFilter } from "react-icons/io5";
-import useToggle from '../hooks/useToggle';
-import FilterDiv from './FilterDiv';
-import animateStyle from '../assets/css/animate.module.css'
+import useToggle from '../../hooks/useToggle';
+import FilterDiv from '../home/FilterDiv';
+import animateStyle from '../../assets/css/animate.module.css'
 
 const Navbar = () => {
 
@@ -72,6 +72,18 @@ const Navbar = () => {
     toggleMobileFilter();
   };
 
+  const reloadHome = () => {
+    
+    dispatch(setFilterData({
+      genres : ',',
+      sortBy : 'popularity.desc',
+      startDate : '',
+      endDate : '',
+    }));
+    dispatch(setCurrentPage(1));
+    navigate('/');
+  }
+
   //-----
 
   return (
@@ -79,10 +91,10 @@ const Navbar = () => {
 
     <nav className="bg-white border-gray-200 dark:bg-gray-800">
       <div className={`max-w-screen-xl  flex flex-wrap items-center justify-between mx-auto p-4`}>
-        <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
-          <img src="/images/logo.svg" className="h-10" alt="Logo" />
-          <p className=' text-gray-800 dark:text-slate-100 font-medium text-lg'>Cineverse</p>
-        </Link>
+        <button onClick={()=>reloadHome()} className="flex items-center space-x-1 rtl:space-x-reverse">
+          <img src='/images/logo.svg' className="h-10" alt="Logo" />
+          <p className=' text-gray-800 dark:text-slate-100 font-semibold text-lg'>Cineverse</p>
+        </button>
         <div onClick={handleToggle} className="cursor-pointer bg-slate-100 dark:bg-gray-700 dark:border-gray-700 text-gray-900 dark:text-white w-12 h-12 flex items-center justify-center border-[1.5px] rounded-full">
           <Expand toggled={isDarkMode} className=' text-2xl' />
         </div>

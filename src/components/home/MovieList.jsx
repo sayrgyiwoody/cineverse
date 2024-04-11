@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { api, image_api } from '../assets/api'
 import MovieCard from './MovieCard';
 import { useSelector } from 'react-redux';
-import PlaceholderCard from './PlaceholderCard';
-import Pagination from './Pagination';
+import Pagination from '../layout/Pagination';
 
 const MovieList = ({ loadingStatus }) => {
 

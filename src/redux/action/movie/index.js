@@ -42,10 +42,3 @@ export const setFilterData = (data) => {
         payload : data,
     }
 }
-
-export const setIsFiltered = (value) => {
-    return {
-        type : ActionType.SET_IS_FILTERED,
-        payload : value,
-    }
-}

@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay ,FreeMode, } from 'swiper/modules';
-import { image_api } from '../assets/api';
+import { image_api } from '../../assets/api';
 
 const CastSwiper = ({cast}) => {
 

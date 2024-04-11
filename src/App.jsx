@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './components/Navbar'
-import Home from './components/Home'
+import Home from './view/Home'
 import { Route, Routes } from 'react-router'
-import DetailPage from './components/DetailPage'
-import NotFound from './components/NotFound'
+import DetailPage from './view/DetailPage'
+import NotFound from './view/NotFound'
+import Navbar from './components/layout/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)

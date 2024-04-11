@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import MovieList from './MovieList'
+import MovieList from '../components/home/MovieList'
 import { api, api_key } from '../assets/api'
-import FilterDiv from './FilterDiv'
-import { fetchMovies, setTotalPage } from '../redux/action/movie'
+import FilterDiv from '../components/home/FilterDiv'
+import { fetchMovies, setFilterData, setTotalPage } from '../redux/action/movie'
 import { useDispatch, useSelector } from 'react-redux'
-import Pagination from './Pagination'
-import PlaceHolderList from './PlaceHolderList'
-import ScrollTop from './ScrollTop'
-import Navbar from './Navbar'
+import PlaceHolderList from '../components/placeholders/PlaceHolderList'
+import ScrollTop from '../components/layout/ScrollTop'
+import Navbar from '../components/layout/Navbar'
 import { setLoadingStatus } from '../redux/action/loading'
+import { useLocation } from 'react-router'
 
 const Home = () => {
+
 
   let currentPage = useSelector((state) => state.movie.currentPage);
   let filterData = useSelector((state) => state.movie.filterData);
@@ -19,6 +20,7 @@ const Home = () => {
   let dispatch = useDispatch();
 
   let loadingStatus = useSelector((state)=>state.loading.isLoading);
+   
   
   const scrollToTop = () => {
     window.scrollTo({
@@ -29,7 +31,6 @@ const Home = () => {
 
   const getMovies = async () => {
     dispatch(setLoadingStatus(true));
-
     let res = await api.get(`/discover/movie?sort_by=${filterData.sortBy}&primary_release_date.gte=${filterData.startDate}&primary_release_date.lte=${filterData.endDate}&with_genres=${filterData.genres}&api_key=${api_key}&page=${currentPage}`);
     dispatch(fetchMovies(res.data.results))
     dispatch(setTotalPage(res.data.total_pages))
@@ -44,7 +45,12 @@ const Home = () => {
     return () => {
       dispatch(fetchMovies([]));
     }
-  }, [currentPage , filterData])
+  }, [currentPage , filterData]);
+
+
+  
+
+
 
 
   return (

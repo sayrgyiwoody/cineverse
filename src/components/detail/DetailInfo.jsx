@@ -1,5 +1,5 @@
 import React from 'react'
-import { image_api } from '../assets/api';
+import { image_api } from '../../assets/api';
 import { Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { RxDotFilled } from "react-icons/rx";
@@ -40,7 +40,6 @@ const DetailInfo = ({movie}) => {
     };
   
     const overlayStyle = {
-      backgroundColor: 'rgba(0, 0, 0, 0.75)',
       position: 'absolute',
       top: 0,
       bottom: 0,
@@ -58,7 +57,7 @@ const DetailInfo = ({movie}) => {
     <div>
       <div style={backgroundImageStyle} className=" relative bg-cover bg-top bg-no-repeat ">
 
-<div className=' ' style={overlayStyle} ></div>
+<div className='bg-[#1a1919a7] dark:bg-[#151414d0]' style={overlayStyle} ></div>
 
 <div className="z-10 relative max-w-6xl px-10 pt-6 pb-10 mx-auto">
 <Link to="/" className=" duration-150 py-2.5 px-5 me-2 mb-5 flex items-center w-fit gap-x-1 text-sm font-medium text-primary focus:outline-none  rounded-lg border-[1.5px] border-primary  z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-primary dark:border-primary hover:bg-primaryHover hover:text-white dark:hover:text-white dark:hover:bg-primaryHover">

@@ -1,7 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setCurrentPage } from '../redux/action/movie';
+import { setCurrentPage } from '../../redux/action/movie';
 
 
 const Pagination = () => {
